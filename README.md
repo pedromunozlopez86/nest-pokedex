@@ -25,7 +25,7 @@ docker-compose up -d
 
 5. Reconstruir la BD con el Seed
 ```
-http://localhost/api/seed
+http://localhost:3000/api/seed
 ```
 ## Stack usado
 
