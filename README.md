@@ -23,6 +23,10 @@ nmp i -g @nestjs/cli
 docker-compose up -d
 ```
 
+5. Reconstruir la BD con el Seed
+```
+http://localhost/api/seed
+```
 ## Stack usado
 
 * MongoDB

@@ -11,21 +11,24 @@ export class SeedService {
     @InjectModel(Pokemon.name)
     private readonly pokemonModel: Model<Pokemon>,
   ) {}
+
+  //
+
   async executeSeed() {
     await this.pokemonModel.deleteMany({}); // delete * from Pokemons
     const { data } = await this.axios.get<PokeResponse>(
-      'https://pokeapi.co/api/v2/pokemon/?limit=10',
+      'https://pokeapi.co/api/v2/pokemon/?limit=650',
     );
 
-    const insertPromisesArray = [];
+    const pokemonsToInsert: { name: string; no: number }[] = [];
 
     data.results.forEach(async ({ name, url }) => {
       const segments = url.split('/');
       const no: number = +segments[segments.length - 2];
-      insertPromisesArray.push(this.pokemonModel.create({ name, no }));
+      pokemonsToInsert.push({ name, no });
     });
 
-    await Promise.all(insertPromisesArray);
+    await this.pokemonModel.insertMany(pokemonsToInsert);
     return `Seed OK`;
   }
 }
