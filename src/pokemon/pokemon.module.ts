@@ -7,6 +7,7 @@ import { Pokemon, PokemonSchema } from './entities/pokemon.entity';
 @Module({
   controllers: [PokemonController],
   providers: [PokemonService],
+  exports: [MongooseModule],
   imports: [
     // inserción de MongoBD en módulo
     MongooseModule.forFeature([
