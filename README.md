@@ -23,11 +23,23 @@ nmp i -g @nestjs/cli
 docker-compose up -d
 ```
 
-5. Reconstruir la BD con el Seed
+5. Clonar el archivo __.env.example__ y renombrar la copia a __.env__
+
+6. Llenar las variables de entorno definidas en __.env__
+
+7. Ejecutar la app en desarrollo con
+
+```
+yarn start:dev
+```
+
+8. Reconstruir la BD con el Seed
+
 ```
 http://localhost:3000/api/seed
 ```
+
 ## Stack usado
 
-* MongoDB
-* Nest
+- MongoDB
+- Nest
